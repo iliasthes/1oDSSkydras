@@ -1,0 +1,25 @@
+float ΦΩΣ;
+void _setup() {
+pinMode(0, INPUT);
+
+pinMode(3, OUTPUT);}
+
+void _loop() {
+}
+
+void setup() {
+ _setup();
+}
+
+void loop() {
+ _loop();
+ΦΩΣ = analogRead(0);
+if((analogRead(0) > 200)) {
+digitalWrite(3, false);
+}
+ else {
+digitalWrite(3, true);
+}
+delay(1 * 1000);
+}
+
