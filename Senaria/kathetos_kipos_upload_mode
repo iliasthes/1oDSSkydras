@@ -1,1 +1,44 @@
+#include <DHT.h>
+#define DHTPIN 3
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
+float AIR_TEMP;
+
+float OUT_LIGHT;
+
+float SOIL_MOISTURE;
+void _setup() {
+dht.begin();
+
+pinMode(0, INPUT);
+
+pinMode(2, INPUT);
+
+pinMode(13, OUTPUT);}
+
+void _loop() {
+}
+
+void setup() {
+ _setup();
+}
+
+void loop() {
+ _loop();
+delay(5 * 1000);
+AIR_TEMP = dht.readTemperature();
+OUT_LIGHT = analogRead(0);
+SOIL_MOISTURE = analogRead(2);
+if((SOIL_MOISTURE < 600)) {
+digitalWrite(13, false);
+}
+ else {
+if(((AIR_TEMP < 3) || ((AIR_TEMP > 30) && (OUT_LIGHT > 700)))) {
+digitalWrite(13, false);
+}
+ else {
+digitalWrite(13, true);
+}
+}
+}
 
